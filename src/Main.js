@@ -47,7 +47,7 @@ function Main() {
   <div>
   <div class="p-5 bg-gray-100 border border-b-0 border-gray-200 dark:border-gray-700">
       <p class="mb-2 text-gray-500 dark:text-gray-400">If you click on the list of satellites, you can bring up an individual satellite's information. </p>
-      <p class="text-gray-500 dark:text-gray-400">You will have access to a brief explanation and additional resources.</p>
+      <p class="text-gray-500 dark:text-gray-400">You will have access to a brief explanation of the satellite's functions and additional resources.</p>
     </div>
   </div>
 </div>
