@@ -175,7 +175,7 @@ const PartsBar = () => {
       <aside class="w-[23%] min-h-[100%] mb-4" aria-label="Sidebar">
         <div class="overflow-y-auto pb-3 mt-4 bg-gray-300 dark:bg-gray-800 rounded-lg">
           <div className="shadow-lg mb-3 py-2 w-full text-gray-900 bg-gray-200 text-center font-bold text-xl">
-            Available Parts: {parts.sum}
+            Consumed Parts: {parts.sum}
           </div>
           <ul class="space-y-2 px-3">
             {parts.map((listElement) => (

@@ -212,10 +212,10 @@ function Sidebar() {
         class="flex grow w-[25%] min-h-[100%] mr-1 flex shadow-lg rounded-lg "
         aria-label="Sidebar"
       >
-        <div class="rounded-l-lg overflow-y-auto py-2 px-4 bg-gray-800 dark:bg-gray-800 ">
+        <div class="rounded-l-lg overflow-y-auto py-2 px-4 bg-gradient-to-l from-blue-900 to-gray-800 shadow-lg">
           <ul class="space-y-2">
             <li>
-              <a class="block py-2  text-2xl font-bold leading-7 text-gray-400 sm:text-2xl sm:truncate">
+              <a class="block py-2  text-2xl font-bold leading-7 text-gray-300 sm:text-2xl sm:truncate">
                 Assembled Satellite:
               </a>
             </li>
@@ -330,10 +330,10 @@ function Sidebar() {
           </ul>
           <div
             id="dropdown-cta"
-            class="p-4 mt-6 bg-blue-200 rounded-lg dark:bg-blue-900"
+            class="p-4 mt-6 mb-4 bg-blue-200 rounded-lg dark:bg-blue-900"
             role="alert"
           >
-            <div class="flex items-center mb-3">
+            <div class="flex items-center ">
               <span class="bg-orange-100 text-orange-800 text-sm font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-orange-200 dark:text-orange-900">
                 Beta
               </span>

@@ -10,7 +10,8 @@ function Simulator() {
   const [exoplanetPage, setExoplanetPagePage] = useState(0);
 
   return (
-    <>
+    <>      <script src="../path/to/flowbite/dist/flowbite.js"></script>
+
         <div className="animate-fade bg-black ease-in-out min-h-screen">
           <div className="flex grow shadow-sm relative justify-center ">
             <div className="grow inline-block bg-black  text-white  content-around  items-center justify-items-center">

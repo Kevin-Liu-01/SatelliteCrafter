@@ -8,8 +8,9 @@ import {
   CheckIcon,
   ChevronDownIcon,
   CurrencyDollarIcon,
-  LinkIcon,
+  SearchIcon,
   LocationMarkerIcon,
+  RefreshIcon
 
 } from "@heroicons/react/solid";
 import { Menu, Transition } from "@headlessui/react";
@@ -58,7 +59,9 @@ const MapChart = () => {
   const selector = useSelector;
   const gridClickedStatus = useSelector(gridClicked);
   const theDiscoveredSatellite = useSelector(discoveredSatellite);
-
+  function restart(){
+    
+  }
   const satelliteGrid = [
     {
       id: 1,
@@ -145,7 +148,7 @@ const MapChart = () => {
           satellitePart.content.lastIndexOf(
             "https://pngimg.com/uploads/camera_lens/camera_lens_PNG101.png"
           ) > -1
-      ).length>1
+      ).length>=1
     ) {
       dispatch(setDiscoveredSatellite("Hubble Telescope"));
     }
@@ -165,7 +168,7 @@ const MapChart = () => {
           satellitePart.content.lastIndexOf(
             "https://cdn.pixabay.com/photo/2021/04/22/21/10/radio-6200198_960_720.png"
           ) > -1
-      ).length>1
+      ).length>=1
     ) {
       dispatch(setDiscoveredSatellite("Sputnik"));
     }
@@ -175,7 +178,7 @@ const MapChart = () => {
           satellitePart.content.lastIndexOf(
             "https://www.microchip.com/en-us/products/clock-and-timing/atomic-clocks/_jcr_content/root/responsivegrid/container/cardgrid/card2/image.coreimg.png/1606931393099/r1-v1-200106-ftd-graph-csac-5071a-lg-fig.png"
           ) > -1
-      ).length>1
+      ).length>=1
     ) {
       dispatch(setDiscoveredSatellite("GPS"));
     }
@@ -185,7 +188,7 @@ const MapChart = () => {
           satellitePart.content.lastIndexOf(
             "https://www.microchip.com/en-us/products/clock-and-timing/atomic-clocks/_jcr_content/root/responsivegrid/container/cardgrid/card2/image.coreimg.png/1606931393099/r1-v1-200106-ftd-graph-csac-5071a-lg-fig.png"
           ) > -1
-      ).length>1
+      ).length>=1
     ) {
       dispatch(setDiscoveredSatellite("Navigation"));
     }
@@ -206,7 +209,7 @@ const MapChart = () => {
           satellitePart.content.lastIndexOf(
             "https://cdn.pixabay.com/photo/2021/04/22/21/10/radio-6200198_960_720.png"
           ) > -1
-      ).length>1
+      ).length>=1
     ) {
       dispatch(setDiscoveredSatellite("Geostationary"));
     }
@@ -218,7 +221,7 @@ const MapChart = () => {
           satellitePart.content.lastIndexOf(
             "https://www.pngkey.com/png/full/175-1750668_satellite-dish-png.png"
           ) > -1
-      ).length>1
+      ).length>=1
     ) {
       dispatch(setDiscoveredSatellite("Communications"));
     }
@@ -235,6 +238,9 @@ const MapChart = () => {
 
    return mm + "/" + dd + "/" + yyyy;
   };
+  function refreshPage() {
+    window.location.reload(false);
+  }
   return (
     <div className="w-full mr-2 bg-gray-100 ">
       <div className="lg:flex lg:items-center lg:justify-between grow mt-3 bg-gray-200 border rounded-lg pr-3">
@@ -278,9 +284,10 @@ const MapChart = () => {
           <span className="hidden sm:block ml-3">
             <button
               type="button"
+              onClick={()=>refreshPage()}
               className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              <LinkIcon
+              <RefreshIcon
                 className="-ml-1 mr-2 h-5 w-5 text-gray-500"
                 aria-hidden="true"
               />
@@ -366,14 +373,11 @@ const MapChart = () => {
               href="#"
               class={finishBar==0?"inline-flex items-center text-sm font-medium text-blue-700 ":"inline-flex items-center text-sm font-medium text-gray-400 "}
             >
-              <svg
-                class="mr-2 w-4 h-4"
+              <SearchIcon
+                class="mr-2 w-5 h-5"
                 fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-              </svg>
+                aria-hidden="true"
+              />
               View Information
             </a>
           </li>
@@ -421,7 +425,7 @@ const MapChart = () => {
           </li>
         </ol>
       </nav>
-      <div class="flex grow ">
+      <div class="flex ">
         <PartsBar />
         <div class="grow p-4 m-4 border-4 border-gray-400 border-dashed rounded-lg bg-[url(https://wallpaperaccess.com/full/19604.jpg)]  grid grid-cols-3 rows-5 gap-4 inline-block">
           {satelliteGrid.map((tile) => (
@@ -431,7 +435,7 @@ const MapChart = () => {
               className={
                 !tile.status
                   ? "cursor-not-allowed flex bg-gradient-to-r from-gray-500 to-blue-800 bg-gray-400 opacity-50 place-content-center text-2xl bold rounded-lg hover:opacity-60"
-                  : "flex bg-gradient-to-r from-gray-500 to-blue-800 bg-gray-400 opacity-90 place-content-center text-2xl bold rounded-lg hover:opacity-100 transition ease-in-out 150"
+                  : "flex bg-gradient-to-r from-gray-700 to-blue-800 bg-gray-400 opacity-90 place-content-center text-2xl bold rounded-lg hover:opacity-100 transition ease-in-out 150"
               }
             >
               <div className="self-center font-bold ">
