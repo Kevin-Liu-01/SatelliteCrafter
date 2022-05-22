@@ -1,15 +1,12 @@
 import './App.css';
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon,GlobeAltIcon } from '@heroicons/react/outline'
-import {updateSelectedPlan } from './storeSlice'
-import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 
 const navigation = [
-  { name: 'The Game', href: '#', current: false, link: "/", function: updateSelectedPlan("Page2")},
-  { name: 'How to Play', href: '#', current: false, link: "/instructions", function: updateSelectedPlan("Page1")},
+  { name: 'The Game', href: '#', current: false, link: "/"},
+  { name: 'How to Play', href: '#', current: false, link: "/instructions"},
   
   
 ]
@@ -20,13 +17,12 @@ function classNames(...classes) {
 }
 
 function Navbar() {
-  const dispatch = useDispatch()
 
   return (
     <Disclosure as="nav" className="bg-gray-900">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -41,7 +37,7 @@ function Navbar() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                <GlobeAltIcon className="inline-block -ml-1 mr-2 h-8 w-8 text-green-500" aria-hidden="true" />,
+                <img className="block h-6 w-6 text-red filter-blu" aria-hidden="true" src="https://pic.onlinewebfonts.com/svg/img_426066.png" />
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4" >
@@ -50,7 +46,6 @@ function Navbar() {
                         to={item.link}
                         key={item.name}
                         href={item.href}
-                        onClick={()=>dispatch(item.function)}
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'px-3 py-2 rounded-md text-sm font-medium'

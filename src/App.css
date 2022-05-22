@@ -58,3 +58,8 @@ body {
       opacity: 1;
    }
 }
+
+.filter-blu{
+  filter: invert(76%) sepia(3%) saturate(6190%) hue-rotate(193deg) brightness(100%) contrast(102%);
+
+}
