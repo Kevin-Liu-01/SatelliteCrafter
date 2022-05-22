@@ -3,19 +3,20 @@ import PartsBar from "./PartsBar.js";
 import { useSelector, useDispatch } from "react-redux";
 import React, { Fragment, useState } from "react";
 import {
-  BriefcaseIcon,
+  GlobeIcon,
   CalendarIcon,
   CheckIcon,
   ChevronDownIcon,
   CurrencyDollarIcon,
   LinkIcon,
   LocationMarkerIcon,
-  PencilIcon,
+
 } from "@heroicons/react/solid";
 import { Menu, Transition } from "@headlessui/react";
 import {
   partData,
-  discoveredSatellite,setDiscoveredSatellite,
+  discoveredSatellite,
+  setDiscoveredSatellite,
   gridClicked,
   gridOnePlaced,
   gridTwoPlaced,
@@ -138,47 +139,138 @@ const MapChart = () => {
     (satPart) => satPart.status == true
   ).length;
   const identifier = () => {
-    if(satelliteGrid.filter((satellitePart)=>((satellitePart.content.lastIndexOf("https://www.pngkey.com/png/full/175-1750668_satellite-dish-png.png"))>-1))){
-      console.log("Comms detected")
-      dispatch(setDiscoveredSatellite("Communications"))
+   if ((finishBar>3)&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://pngimg.com/uploads/camera_lens/camera_lens_PNG101.png"
+          ) > -1
+      ).length>1
+    ) {
+      dispatch(setDiscoveredSatellite("Hubble Telescope"));
+    }
+    else if (finishBar>5&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://www.baumer.com/medias/sys_master/images/images/h71/h7c/8961031766046/mamfile-1619743-720Wx540H-c.png"
+          ) > -1
+      )
+    ) {
+      dispatch(setDiscoveredSatellite("Voyager 1"));
+    }
+    else if (finishBar<=2&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://cdn.pixabay.com/photo/2021/04/22/21/10/radio-6200198_960_720.png"
+          ) > -1
+      ).length>1
+    ) {
+      dispatch(setDiscoveredSatellite("Sputnik"));
+    }
+    else if (finishBar>3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://www.microchip.com/en-us/products/clock-and-timing/atomic-clocks/_jcr_content/root/responsivegrid/container/cardgrid/card2/image.coreimg.png/1606931393099/r1-v1-200106-ftd-graph-csac-5071a-lg-fig.png"
+          ) > -1
+      ).length>1
+    ) {
+      dispatch(setDiscoveredSatellite("GPS"));
+    }
+    else if (finishBar>3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://www.microchip.com/en-us/products/clock-and-timing/atomic-clocks/_jcr_content/root/responsivegrid/container/cardgrid/card2/image.coreimg.png/1606931393099/r1-v1-200106-ftd-graph-csac-5071a-lg-fig.png"
+          ) > -1
+      ).length>1
+    ) {
+      dispatch(setDiscoveredSatellite("Navigation"));
+    }
+    else if (finishBar>3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://i.stack.imgur.com/Pgokk.png"
+          ) > -1
+      ).length>1
+    ) {
+      dispatch(setDiscoveredSatellite("Remote Sensing"));
+    }
+    
+    else if (finishBar>3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://cdn.pixabay.com/photo/2021/04/22/21/10/radio-6200198_960_720.png"
+          ) > -1
+      ).length>1
+    ) {
+      dispatch(setDiscoveredSatellite("Geostationary"));
+    }
+    
+    
+    else if (finishBar>3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://www.pngkey.com/png/full/175-1750668_satellite-dish-png.png"
+          ) > -1
+      ).length>1
+    ) {
+      dispatch(setDiscoveredSatellite("Communications"));
+    }
+    else {
+      
     }
   };
+  
+  const today = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const yyyy = today.getFullYear();
 
+   return mm + "/" + dd + "/" + yyyy;
+  };
   return (
-    <div className="w-full mr-2 bg-gray-100">
-      <div className="lg:flex lg:items-center lg:justify-between grow mt-3 bg-gray-100 pr-3">
+    <div className="w-full mr-2 bg-gray-100 ">
+      <div className="lg:flex lg:items-center lg:justify-between grow mt-3 bg-gray-200 border rounded-lg pr-3">
         <div className="flex-1 min-w-0 ">
-          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+          <h2 className="text-2xl pl-2 pb-1 font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
             {theDiscoveredSatellite}
           </h2>
           <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-            <div className="mt-2 flex items-center text-md text-gray-500">
-              <BriefcaseIcon
+            <div className="mt-2 lg:pl-2 flex items-center  text-md text-gray-500">
+              <GlobeIcon
                 className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
-              Full-time
+              Orbital Satellite
             </div>
-            <div className="mt-2 flex items-center text-md text-gray-500">
+            <div className="mt-2 py-1 flex items-center text-md text-gray-500">
               <LocationMarkerIcon
                 className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
-              Remote
+              Launched From Kennedy Space Center
             </div>
             <div className="mt-2 flex items-center text-md text-gray-500">
               <CurrencyDollarIcon
                 className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
-              $120k &ndash; $140k
+              Cost:{" "}
+              {(finishBar * (finishBar * (Math.random() * 3) + 5)).toFixed()}M
             </div>
             <div className="mt-2 flex items-center text-md text-gray-500">
               <CalendarIcon
                 className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />
-              Closing on January 9, 2020
+              Launched on {today()}
             </div>
           </div>
         </div>
@@ -199,8 +291,8 @@ const MapChart = () => {
           <span className="sm:ml-3">
             <button
               type="button"
-              onClick={()=>identifier()}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={() => identifier()}
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 transition fade-in-out 150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
               Identify
@@ -258,9 +350,9 @@ const MapChart = () => {
           </Menu>
         </div>
       </div>
-      <div class="w-full my-4 bg-gray-200 rounded-full h-3 ">
+      <div class="w-full my-4 bg-gradient-to-r from-gray-300  to-gray-200 rounded-full h-3 ">
         <div
-          class="bg-gradient-to-r from-blue-400 to-blue-500  h-3 rounded-full"
+          class="bg-gradient-to-r from-blue-400  to-blue-500  h-3 rounded-full"
           style={{ width: (finishBar / 9) * 100 + "%" }}
         ></div>
       </div>
@@ -272,7 +364,7 @@ const MapChart = () => {
           <li class="inline-flex items-center">
             <a
               href="#"
-              class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              class={finishBar==0?"inline-flex items-center text-sm font-medium text-blue-700 ":"inline-flex items-center text-sm font-medium text-gray-400 "}
             >
               <svg
                 class="mr-2 w-4 h-4"
@@ -282,7 +374,7 @@ const MapChart = () => {
               >
                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
               </svg>
-              Design
+              View Information
             </a>
           </li>
           <li>
@@ -301,9 +393,9 @@ const MapChart = () => {
               </svg>
               <a
                 href="#"
-                class="ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white"
-              >
-                Test
+                class={(finishBar>0&&finishBar<9)?"ml-2 inline-flex items-center text-sm font-medium text-blue-700 ":"ml-2 inline-flex items-center text-sm font-medium text-gray-400 "}
+                >
+                Assemble Parts
               </a>
             </div>
           </li>
@@ -321,16 +413,17 @@ const MapChart = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span class="ml-1 text-sm font-medium text-gray-400 md:ml-2 dark:text-gray-500">
-                Your Satellite
+              <span               class={finishBar==9?"ml-2 inline-flex items-center text-sm font-medium text-blue-700 ":"ml-2 inline-flex items-center text-sm font-medium text-gray-400 "}
+>
+                Identify the Satellite
               </span>
             </div>
           </li>
         </ol>
       </nav>
-      <div class="flex grow">
+      <div class="flex grow ">
         <PartsBar />
-        <div class="grow p-4 m-4 border-4 border-gray-400 border-dashed rounded-lg bg-[url(https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)] grow grid grid-cols-3 rows-5 gap-4 inline-block">
+        <div class="grow p-4 m-4 border-4 border-gray-400 border-dashed rounded-lg bg-[url(https://wallpaperaccess.com/full/19604.jpg)]  grid grid-cols-3 rows-5 gap-4 inline-block">
           {satelliteGrid.map((tile) => (
             <button
               disabled={!gridClickedStatus || tile.status}
@@ -342,12 +435,15 @@ const MapChart = () => {
               }
             >
               <div className="self-center font-bold ">
-                {!tile.status?tile.content:
-                <img
-                  className="block h-24 w-24"
-                  aria-hidden="true"
-                  src={tile.content}
-                />}
+                {!tile.status ? (
+                  tile.content
+                ) : (
+                  <img
+                    className="block h-24 w-24"
+                    aria-hidden="true"
+                    src={tile.content}
+                  />
+                )}
               </div>
             </button>
           ))}

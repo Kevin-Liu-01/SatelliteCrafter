@@ -44,9 +44,8 @@ const PartsBar = () => {
       name: "Antenna",
       add: selector((state) => state.component.antenna),
       function: setAntenna(),
-      picture: (
-        "https://www.pngkey.com/png/full/175-1750668_satellite-dish-png.png"
-      ),
+      picture:
+        "https://www.pngkey.com/png/full/175-1750668_satellite-dish-png.png",
     },
     {
       icon: (
@@ -59,9 +58,8 @@ const PartsBar = () => {
       name: "Transponder",
       add: selector((state) => state.component.transponder),
       function: setTransponder(),
-      picture: (
-        "https://cdn.pixabay.com/photo/2021/04/22/21/10/radio-6200198_960_720.png"
-      ),
+      picture:
+        "https://cdn.pixabay.com/photo/2021/04/22/21/10/radio-6200198_960_720.png",
     },
     {
       icon: (
@@ -75,9 +73,7 @@ const PartsBar = () => {
       name: "Solar Panel",
       add: selector((state) => state.component.solar),
       function: setSolar(),
-      picture: (
-        "https://pngimg.com/uploads/solar_panel/solar_panel_PNG141.png"
-      ),
+      picture: "https://pngimg.com/uploads/solar_panel/solar_panel_PNG141.png",
     },
     {
       icon: (
@@ -91,9 +87,8 @@ const PartsBar = () => {
       name: "Nuclear Reactor",
       add: selector((state) => state.component.nuclear),
       function: setNuclear(),
-      picture: (
-        "https://www.nsenergybusiness.com/wp-content/uploads/sites/3/2020/10/Ed8VqJ0UwAA9-NZ-e1601654171214.png"
-      ),
+      picture:
+        "https://www.nsenergybusiness.com/wp-content/uploads/sites/3/2020/10/Ed8VqJ0UwAA9-NZ-e1601654171214.png",
     },
     {
       icon: (
@@ -107,9 +102,7 @@ const PartsBar = () => {
       name: "Camera",
       add: selector((state) => state.component.camera),
       function: setCamera(),
-      picture: (
-        "https://pngimg.com/uploads/camera_lens/camera_lens_PNG101.png"
-      ),
+      picture: "https://pngimg.com/uploads/camera_lens/camera_lens_PNG101.png",
     },
     {
       icon: (
@@ -123,9 +116,8 @@ const PartsBar = () => {
       name: "Radiation Sensor",
       add: selector((state) => state.component.radiation),
       function: setRadiation(),
-      picture: (
-        "https://www.baumer.com/medias/sys_master/images/images/h71/h7c/8961031766046/mamfile-1619743-720Wx540H-c.png"
-      ),
+      picture:
+        "https://www.baumer.com/medias/sys_master/images/images/h71/h7c/8961031766046/mamfile-1619743-720Wx540H-c.png",
     },
     {
       icon: (
@@ -139,9 +131,7 @@ const PartsBar = () => {
       name: "Infared Sensor",
       add: selector((state) => state.component.infared),
       function: setInfared(),
-      picture: (
-        "https://i.stack.imgur.com/Pgokk.png"
-      ),
+      picture: "https://i.stack.imgur.com/Pgokk.png",
     },
     {
       icon: (
@@ -155,9 +145,7 @@ const PartsBar = () => {
       name: "Thrusters",
       add: selector((state) => state.component.thrusters),
       function: setThrusters(),
-      picture: (
-        "https://i.redd.it/ibs8lce7ik3z.png"
-      ),
+      picture: "https://i.redd.it/ibs8lce7ik3z.png",
     },
     {
       icon: (
@@ -171,19 +159,23 @@ const PartsBar = () => {
       name: "Atomic Clock",
       add: selector((state) => state.component.clock),
       function: setClock(),
-      picture: (
-        "https://www.microchip.com/en-us/products/clock-and-timing/atomic-clocks/_jcr_content/root/responsivegrid/container/cardgrid/card2/image.coreimg.png/1606931393099/r1-v1-200106-ftd-graph-csac-5071a-lg-fig.png"
-      ),
+      picture:
+        "https://www.microchip.com/en-us/products/clock-and-timing/atomic-clocks/_jcr_content/root/responsivegrid/container/cardgrid/card2/image.coreimg.png/1606931393099/r1-v1-200106-ftd-graph-csac-5071a-lg-fig.png",
     },
   ];
-
+  function sum () {
+    const arr = parts.filter((part) => part > 0);
+    console.log("Sum:"+arr)
+    const reducer = (accumulator, curr) => accumulator + curr;
+    return ( 9-arr.reduce(reducer));
+  };
   return (
     <>
       <script src="../path/to/flowbite/dist/flowbite.js"></script>
       <aside class="w-[23%] min-h-[100%] mb-4" aria-label="Sidebar">
         <div class="overflow-y-auto pb-3 mt-4 bg-gray-300 dark:bg-gray-800 rounded-lg">
           <div className="shadow-lg mb-3 py-2 w-full text-gray-900 bg-gray-200 text-center font-bold text-xl">
-            Available Parts:
+            Available Parts: {parts.sum}
           </div>
           <ul class="space-y-2 px-3">
             {parts.map((listElement) => (
