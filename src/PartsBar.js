@@ -128,7 +128,7 @@ const PartsBar = () => {
       "
         />
       ),
-      name: "Infared Sensor",
+      name: "Infrared Sensor",
       add: selector((state) => state.component.infared),
       function: setInfared(),
       picture: "https://i.stack.imgur.com/Pgokk.png",
@@ -163,19 +163,14 @@ const PartsBar = () => {
         "https://www.microchip.com/en-us/products/clock-and-timing/atomic-clocks/_jcr_content/root/responsivegrid/container/cardgrid/card2/image.coreimg.png/1606931393099/r1-v1-200106-ftd-graph-csac-5071a-lg-fig.png",
     },
   ];
-  function sum () {
-    const arr = parts.filter((part) => part > 0);
-    console.log("Sum:"+arr)
-    const reducer = (accumulator, curr) => accumulator + curr;
-    return ( 9-arr.reduce(reducer));
-  };
+
   return (
     <>
       <script src="../path/to/flowbite/dist/flowbite.js"></script>
       <aside class="w-[23%] min-h-[100%] mb-4" aria-label="Sidebar">
         <div class="overflow-y-auto pb-3 mt-4 bg-gray-300 dark:bg-gray-800 rounded-lg">
           <div className="shadow-lg mb-3 py-2 w-full text-gray-900 bg-gray-200 text-center font-bold text-xl">
-            Consumed Parts: {parts.sum}
+            Consumed Parts: 
           </div>
           <ul class="space-y-2 px-3">
             {parts.map((listElement) => (

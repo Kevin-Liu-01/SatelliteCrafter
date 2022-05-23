@@ -142,37 +142,8 @@ const MapChart = () => {
     (satPart) => satPart.status == true
   ).length;
   const identifier = () => {
-   if ((finishBar>3)&&
-      satelliteGrid.filter(
-        (satellitePart) =>
-          satellitePart.content.lastIndexOf(
-            "https://pngimg.com/uploads/camera_lens/camera_lens_PNG101.png"
-          ) > -1
-      ).length>=1
-    ) {
-      dispatch(setDiscoveredSatellite("Hubble Telescope"));
-    }
-    else if (finishBar>5&&
-      satelliteGrid.filter(
-        (satellitePart) =>
-          satellitePart.content.lastIndexOf(
-            "https://www.baumer.com/medias/sys_master/images/images/h71/h7c/8961031766046/mamfile-1619743-720Wx540H-c.png"
-          ) > -1
-      )
-    ) {
-      dispatch(setDiscoveredSatellite("Voyager 1"));
-    }
-    else if (finishBar<=2&&
-      satelliteGrid.filter(
-        (satellitePart) =>
-          satellitePart.content.lastIndexOf(
-            "https://cdn.pixabay.com/photo/2021/04/22/21/10/radio-6200198_960_720.png"
-          ) > -1
-      ).length>=1
-    ) {
-      dispatch(setDiscoveredSatellite("Sputnik"));
-    }
-    else if (finishBar>3&&
+   
+     if (finishBar>3&&
       satelliteGrid.filter(
         (satellitePart) =>
           satellitePart.content.lastIndexOf(
@@ -182,7 +153,7 @@ const MapChart = () => {
     ) {
       dispatch(setDiscoveredSatellite("GPS"));
     }
-    else if (finishBar>3&&
+    else if (finishBar>2&&
       satelliteGrid.filter(
         (satellitePart) =>
           satellitePart.content.lastIndexOf(
@@ -192,18 +163,18 @@ const MapChart = () => {
     ) {
       dispatch(setDiscoveredSatellite("Navigation"));
     }
-    else if (finishBar>3&&
+    else if (finishBar>2&&
       satelliteGrid.filter(
         (satellitePart) =>
           satellitePart.content.lastIndexOf(
             "https://i.stack.imgur.com/Pgokk.png"
           ) > -1
-      ).length>1
+      ).length>=1
     ) {
       dispatch(setDiscoveredSatellite("Remote Sensing"));
     }
     
-    else if (finishBar>3&&
+    else if (finishBar>2&&
       satelliteGrid.filter(
         (satellitePart) =>
           satellitePart.content.lastIndexOf(
@@ -213,9 +184,18 @@ const MapChart = () => {
     ) {
       dispatch(setDiscoveredSatellite("Geostationary"));
     }
-    
-    
     else if (finishBar>3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://i.redd.it/ibs8lce7ik3z.png"
+          ) > -1
+      ).length>=1
+    ) {
+      dispatch(setDiscoveredSatellite("Geocentric Orbit"));
+    }
+    
+    else if (finishBar>2&&
       satelliteGrid.filter(
         (satellitePart) =>
           satellitePart.content.lastIndexOf(
@@ -225,8 +205,35 @@ const MapChart = () => {
     ) {
       dispatch(setDiscoveredSatellite("Communications"));
     }
-    else {
-      
+    else if ((finishBar>3)&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://pngimg.com/uploads/camera_lens/camera_lens_PNG101.png"
+          ) > -1
+      ).length>=1
+    ) {
+      dispatch(setDiscoveredSatellite("Hubble Telescope"));
+    }
+    else if (finishBar>3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "https://www.baumer.com/medias/sys_master/images/images/h71/h7c/8961031766046/mamfile-1619743-720Wx540H-c.png"
+          ) > -1
+      )
+    ) {
+      dispatch(setDiscoveredSatellite("Voyager 1"));
+    }
+    else if (finishBar<=3&&
+      satelliteGrid.filter(
+        (satellitePart) =>
+          satellitePart.content.lastIndexOf(
+            "hhttps://i.redd.it/ibs8lce7ik3z.png"
+          ) > -1
+      ).length>=1
+    ) {
+      dispatch(setDiscoveredSatellite("Sputnik"));
     }
   };
   
